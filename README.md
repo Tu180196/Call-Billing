@@ -23,6 +23,12 @@ To run the service in development mode, use the following command and select the
 
           `mvn spring-boot:run`
 
+
+**Testing**
+
+You can test with postman collection in project: **`Call billing.postman_collection.json`**
+
+
 # To run the service from the built binaries, use the following command:
 
 `java -jar target/mobilebilling-0.0.1-SNAPSHOT.jar`

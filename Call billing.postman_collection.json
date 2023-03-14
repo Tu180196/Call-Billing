@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "3974e351-4819-4afa-a924-4daba8c7d1e2",
+		"name": "Call billing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01. New Record",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "XSRF-TOKEN=b530ef79-d7ca-41ee-9cd9-6fe38ac264c2; opbs=fe7dfcea-9cd2-44c4-ac5d-e773ca3b811f; JSESSIONID=54CB2B9BC6AA9118A0A2D184580707E7"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"call_duration\": 60000\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/mobile/tumg/call",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mobile",
+						"tumg",
+						"call"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02. Get Billing",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "XSRF-TOKEN=b530ef79-d7ca-41ee-9cd9-6fe38ac264c2; opbs=fe7dfcea-9cd2-44c4-ac5d-e773ca3b811f; JSESSIONID=54CB2B9BC6AA9118A0A2D184580707E7"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/mobile/tumg/billing",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"mobile",
+						"tumg",
+						"billing"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "cursor",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
