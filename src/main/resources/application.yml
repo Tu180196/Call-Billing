@@ -1,10 +1,10 @@
 ### LOCAL Profile
 server:
-  port: 8080
+  port: 8081
 spring:
-  config:
-    activate:
-      on-profile: local
+#  config:
+#    activate:
+#      on-profile: local
   datasource:
     url: jdbc:mysql://localhost:3306/call_billing?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true
 #    platform: mysql
