@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property dbms="mssql" name="varcharDataType" value="NVARCHAR"/>
+    <property dbms="mysql" name="varcharDataType" value="VARCHAR"/>
+    <property dbms="oracle" name="varcharDataType" value="VARCHAR2"/>
+    <property name="varcharDataType" value="VARCHAR"/>
+
+    <property dbms="mssql" name="varcharDataType" value="NVARCHAR"/>
+    <property dbms="mysql" name="varcharDataType" value="VARCHAR"/>
+    <property dbms="oracle" name="varcharDataType" value="VARCHAR2"/>
+
+    <property dbms="mysql,mssql" name="intDataType" value="INT"/>
+    <property dbms="oracle" name="intDataType" value="INTEGER"/>
+
+    <property dbms="mysql,mssql,oracle" name="decimalDataType" value="DECIMAL"/>
+
+    <changeSet author="tumg" id="change_set_010720221609">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="call_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="call_record">
+            <column name="id" type="${intDataType}(11)" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_id" type="${varcharDataType}(36)"/>
+            <column name="call_duration" type="${intDataType}"/>
+            <column name="block_count" type="${intDataType}"/>
+            <column name="created_at" type="datetime"/>
+            <column name="modified_at" type="datetime"/>
+            <column name="created_by" type="${varcharDataType}(64)"/>
+            <column name="modified_by" type="${varcharDataType}(64)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="tumg" id="change_set_040720221608">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user"/>
+            </not>
+        </preConditions>
+        <createTable tableName="user">
+            <column name="id" type="${varcharDataType}(36)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_name" type="${varcharDataType}(32)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="tumg" id="change_set_040720221609">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="user"/>
+        </preConditions>
+        <insert tableName="user">
+            <column name="id" value="123456"/>
+            <column name="user_name" value="tumg"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
